@@ -6,6 +6,13 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");//Minimal API endpoint
 
+//Ex1: Returning a list (Hard Coded)
+//Here i am testing endpoint
+app.MapGet("/Mobilephones", () => new List<string> { "Samsung", "Oneplus", "Apple" });
+
+//Ex2: Returning a Dynamic List(Query Parameters)
+app.MapGet("/RepeatNames", (string name, int count) => Enumerable.Repeat(name, count).ToList());
+
 //Add MVC Route
 app.MapControllerRoute(
     name: "default",
